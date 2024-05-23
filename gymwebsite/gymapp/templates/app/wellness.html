@@ -1,0 +1,71 @@
+{% extends 'index.html'%}
+
+{% block style%}
+<style>
+    .box{
+     margin-top: 50px !important;
+     box-shadow:2px 2px 5px black,-2px -2px 5px black;
+     font-size:20px;
+     margin:auto;
+     text-align:justify;
+     padding:20px;
+     width:1200px;
+    } 
+    h1{
+     text-align:center;
+     text-style:bold;
+     font-size:40px;
+     font-family: "Roboto Slab", serif;
+    }
+    
+    .center a{
+   font size:70px;
+   {% comment %} height:50px; {% endcomment %}
+   {% comment %} width:200px; {% endcomment %}
+   background-color:yellow!important;
+   color:black!important;
+   font-family: "Roboto Slab", serif;
+     
+    }
+    .center{
+     text-align:center;
+     font-size:30px;
+    }
+ </style>
+{% endblock %}
+
+{% block body%}
+    
+</head>
+<body>
+    <div id="wellnessbody">
+
+    
+    <div class="Wellness">
+    <h1>ACTIVE LIFE GYM CORPORATE WELLNESS PROGRAM</h1>
+    <div class="box">
+    <p>Why Physical Fitness Matters<br>
+    <br>A Sedentary Lifestyle And Elevated Stress Levels Are Not Uncommon 
+    In Corporate Executives. Insufficient Physical Activity Leads To A Decline 
+    In Energy, Stamina And Health, Which Adversely Affects Productivity And Performance.
+     <br><br>Aside From Reducing The Risk Of Heart Disease, High Blood Pressure,
+      High Cholesterol, Stroke, Type 2 Diabetes And Certain Types Of Cancer, Regular
+       Exercise Keeps You Energised And Helps You Carry Out Your Daily Activities More 
+       Efficiently. <br><br>Why Corporate Wellness Programs<br><br>Corporate Wellness 
+       Programs Not Only Serve To Improve Output, But Also To Enhance Employee Loyalty. 
+       They Help Strengthen Team Spirit, Boost Confidence And Workforce Morale.<br><br>
+       At Active Life gym, We Understand Both The Toll Corporate Lifestyle Can Take 
+       On Health, And The Benefits Of Establishing A Personal Fitness Regime. With 
+       The Ultimate Goal Of Spreading Fitness Through Well-Rounded Organisations,
+        We Have Developed A Range Of Solutions And Services To Meet The Fitness
+         Requirements Of Corporate Employees.<br><br>To View Active Life GYM 
+        </p>
+    </div>
+        <h1>Request more information about our corporate<br> wellness program</h1>
+        <div class="center">  
+            <a href="{% url 'showplan' %}?name=wellness" class="btn btn-primary"><b>See plans<b></a>
+        </div>    
+    
+    <div>
+    </div>
+{% endblock %}

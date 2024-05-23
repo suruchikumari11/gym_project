@@ -1,0 +1,208 @@
+{% extends 'index.html'%}
+
+{% block style%}
+<style>
+  #membership-body{
+    
+   padding:10vh;
+  }
+  #membership-main{
+    border:2px solid black;
+    background-color:#bebebe;
+    padding:2rem;
+    box-shadow:2px 2px 5px black;
+    border-radius:1rem;
+
+    margin:2rem 0rem;
+  }
+  #membertiming option span{
+    color:orangered;
+  }
+  #planheading h2{
+    text-align:center;
+  }
+  .totalprice{
+    display:flex;
+    position:fixed;
+    bottom:0;
+    width:70%;
+    background-color:orangered;
+    border:2px solid black;
+    padding:2vh;
+    border-radius:1rem;
+  }
+  .totalprice h3{
+      color:white;
+  }
+  .totalprice button{
+    position: absolute;
+    right:1rem;
+  }
+</style>
+
+{% endblock %}
+
+{% block body%}
+
+    <div id="membership-body" class="container">
+
+
+      <div id="planheading">
+        <h2>{{M}} membership for {{validity}}</h2>
+      </div>
+        
+    <div id="membership-main">
+
+        
+        <form action='{% url 'buymembershipform' %}' method='Post'  id='myform'>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="membername" class="form-label">Name</label>
+              <input type="text" class="form-control" id="membername" name="membername" aria-describedby="memberHelp">
+              
+            </div>
+            <div class="mb-3">
+              <label for="memberemail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="memberemail" name="memberemail">
+            </div>
+            <div class="mb-3">
+              <label for="memberphone" class="form-label">Phone</label>
+              <input type="phone" class="form-control" id="memberphone" name="memberphone">
+            </div>
+            <div class="mb-3">
+              <label for="memberdob" class="form-label">Dateofbirth</label>
+              <input type="date" class="form-control" id="memberdob" name="memberdob">
+            </div>
+            <div class="mb-3">
+              <label for="memberaddress" class="form-label">Address</label>
+              <input type="text" class="form-control" id="memberaddress" name="memberaddress">
+            </div>
+              <input type="hidden" name="membershipname" value="{{ M }}">
+              <input type="hidden" name="membershipplan" value="{{ P }}">
+              <input type="hidden" name="membershipvalidity" value="{{ validity }}">
+            <div class="mb-3">
+                <label for="membertiming" class="form-label">Set Time</label>
+                <br>
+                <select name="membertiming" id="membertiming">
+                    <option value="" selected>select the time slot</option>
+                    <option value="7amto9am">07am to 09am MAX <p>15</p>,
+                      {% for i in seat %}
+                        {% if i.time == '7amto9am'%}
+                            
+                        <span class='rev1' id='reserved1'>{{i.noofpeople}}</span>
+                        {% else %}
+                        <span >0</span>
+                            
+                        {% endif%}
+                      {% endfor %}
+                      REV
+                    
+                    </option>
+                    <option value="9amto11am">09am to 11am MAX <p>15</p>,
+                      {% for i in seat %}
+                        {% if i.time == '9amto11am'%}
+                            <span class='rev1'>{{i.noofpeople}}</span>
+                          {% else %}
+                            <span >0</span>
+                        {% endif%}
+                      {% endfor %}
+                      REV
+                    
+                    
+                    </option>
+                    <option value="3pmto5pm">03pm to 05pm MAX <p>15</p>,
+                      {% for i in seat %}
+                        {% if i.time == '3pmto5pm'%}
+                            <span class='rev1'>{{i.noofpeople}}</span>
+                          {% else %}
+                            <span >0</span>
+                        {% endif%}
+                      {% endfor %}
+                      REV
+                    
+                    
+                    </option>
+                    <option value="5pmto7pm">05pm to 07pm MAX <p>15</p>,
+                      {% for i in seat %}
+                        {% if i.time == '5pmto7pm'%}
+                            <span class='rev1'>{{i.noofpeople}}</span>
+                          {% else %}
+                            <span >0</span>
+                        {% endif%}
+                      {% endfor %}
+                      REV
+                    
+                    </option>
+                    <option value="7pmto9pm">07pm to 09pm MAX <p>15</p>,
+                      {% for i in seat %}
+                        {% if i.time == '7pmto9pm'%}
+                            <spanclass='rev1' >{{i.noofpeople}}</span>
+                          {% else %}
+                            <span >0</span>
+                        {% endif%}
+                      {% endfor %}
+                      REV
+                    
+                    
+                    </option>
+                    <option value="9pmto11pm">09pm to 11pm MAX <p>15</p>,
+                      {% for i in seat %}
+                        {% if i.time == '9pmto11pm'%}
+                            <span class='rev1'>{{i.noofpeople}}</span>
+                          {% else %}
+                            <span >0</span>
+                        {% endif%}
+                      {% endfor %}
+                      REV
+                    
+                    </option>
+                </select>
+              </div>
+              <div class='totalprice'>
+                <h3>&#8377; {{P}} /-</h3>
+                <button type="submit" class="btn btn-success">Buy Plan</button>
+              </div>
+          </form>
+
+          
+    </div>
+    </div>
+
+{% endblock %}
+{% block script %}
+    <script>
+      document.addEventListener("DOMContentLoaded", function()
+      {
+        console.log('Ayush')
+        document.getElementById("myform").addEventListener("submit", function(event)
+        {
+        
+            event.preventDefault();
+            let countSelect = document.getElementById("membertiming");
+            let selectedOption = countSelect.options[countSelect.selectedIndex];    
+            let optionText = selectedOption.innerHTML;        
+            let removetrails = optionText.split(/\s+/).filter(word => word.trim() !== '').join(' ');       
+            let splitintoarray = removetrails.split(' ');       
+            let extractnumber = parseInt(splitintoarray[5]);
+      
+            if (extractnumber >=15)
+            {
+              alert('Maximum number of member are reached for this time slot')
+            }
+            else
+            {
+              document.getElementById("myform").submit();
+              shouldSubmit = true;
+              if (shouldSubmit)
+              {
+                alert('Your order has been saved. We will reach you soon via email for confirmation.');
+              }
+            }
+        
+        });
+      });
+
+
+    </script> 
+
+    {% endblock %}

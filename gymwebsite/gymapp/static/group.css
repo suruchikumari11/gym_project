@@ -1,0 +1,41 @@
+
+.group{
+  /* margin-top: 90px; */
+  margin-bottom: 0px;
+  width:100%;
+  height:350px;
+  background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("group1.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-size: cover;
+}
+  
+.container {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Align items vertically in the center */
+  }
+
+  
+  .image {
+    margin-left: 20px; 
+    flex:1;
+  }
+  
+  .image img {
+    
+   height: auto;
+  }
+  #seeplandiv{
+    display: flex;
+    flex-direction: column;
+  }
+  #center a{
+    font-size: 20px;
+     /* height:100px; */
+     text-decoration: none;
+     /* width:200px; */
+     background-color:yellow!important;
+     color:black!important;
+     font-family: "Roboto Slab", serif;
+       
+      }

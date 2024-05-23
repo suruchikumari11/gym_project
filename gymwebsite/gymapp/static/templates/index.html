@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet"/>
+    <path fill='#000' d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16m-.997-4L6.76 11.757l1.414-1.414l2.829 2.829l5.657-5.657l1.414 1.414z'/></svg>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/eff65daa71.js" crossorigin="anonymous"></script>
+
+    <style>
+      
+        
+        #navbar{
+          top:0;
+            position:absolute;
+            z-index: 1;
+            width: 100%;
+        }
+        #logo{
+            height:2rem;
+        }
+        .footer__container {
+            background-color: black;
+            position: relative;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 400px repeat(3, 1fr);
+            gap: 2rem;
+         
+        }
+        .footer__logo {
+          max-width: 150px;
+          margin-bottom: 2rem;
+        }
+        
+        .footer__col p {
+            margin-left:2rem;
+          margin-bottom: 2rem;
+          color: white;
+        }
+        
+        .footer__socials {
+          margin-left: 50px;
+          display: flex;
+          margin: 20px;
+          align-items: center;
+          gap: 1rem;
+          
+        }
+        
+        .footer__socials a {
+          padding: 5px 10px;
+          font-size: 1.25rem;
+          color: white;
+          border: 1px solid orange;
+          border-radius: 100%;
+          transition: 0.3s;
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          text-decoration: none;
+        }
+        
+        .footer__socials a:hover {
+          color:white;
+          background-color: orange;
+          
+        }
+        .footer__col h4 {
+          margin-top: 8cqw;
+          margin-bottom: 2rem;
+          font-size: 30px;
+          font-weight: 500;
+          color: white;
+        }
+        
+        .footer__col > a {
+          display: block;
+          text-decoration: none;
+          margin-bottom: 1rem;
+          color:white;
+          text-shadow: 5px 5px 20px black;
+          font-size: 20px;
+          font-weight: 500px;
+          transition: 0.3s;
+          
+        }
+        
+        .footer__col > a:hover {
+          color:orange;
+          border-radius: 5px solid orange;
+        }
+        
+        .footer__bar {
+          max-width: 80%;
+          
+          text-align: center;
+          padding: 1rem;
+          font-size: 0.8rem;
+          color: white;
+        }
+        body{
+          background-color:#efefef;
+        }
+        
+    </style>
+
+    {% block style%}
+    {% endblock %}
+
+  </head>
+  <body>
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                {% load static%}
+              <a class="navbar-brand" href="{% url 'home'%}"><img  id="logo" src="{% static 'logo.jpg'%}" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Membership
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'group'%}">Group Membership</a></li>
+                            <li><a class="dropdown-item" href="{% url 'wellness'%}">Wellness Membership</a></li>
+                            <li><a class="dropdown-item" href="{% url 'personal'%}">Personal Membership</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'gallery'%}">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contact'%}">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'about'%}">About us</a>
+                    </li>
+                  
+                </ul>
+                <div id="buttons">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'profile' %}" id="user" class="btn btn-success btn-sm mx-2">
+                    <i class="fa-solid fa-user"></i>
+                    <span>{{user.username}}</span>
+                  </a>
+                  <a href="{%url 'logout'%}" id='logoutbutton' class="btn btn-success btn-sm mx-2">Logout</a>
+                  {% else %}
+                      <a href="{%url 'login_page'%}" class="btn btn-success btn-sm mx-2">Login</a>
+                  {% endif %}
+                  <a href="{%url 'admin'%}" class="btn btn-success btn-sm mx-2">Admin Login</a>
+                </div>
+                
+              </div>
+            </div>
+          </nav>
+    </div>
+
+    {% block body%}
+    {% endblock%}
+
+
+    <footer class=" footer__container">
+         
+        <div class="footer__col">
+          <div class="footer__logo"><img src="/static/logo.jpg" alt="logo" /></div>
+          <p>
+            Take the first step towards a healthier, stronger you with our
+            unbeatable pricing plans. Let's sweat, achieve, and conquer together!
+          </p>
+          <div class="footer__socials">
+            <a href="#"><i class="ri-facebook-fill"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-twitter-fill"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="#">Business</a>
+          <a href="#">Franchise</a>
+          <a href="#">Partnership</a>
+          <a href="#">Network</a>
+        </div>
+        <div class="footer__col">
+          <h4>About Us</h4>
+          <a href="#">Security</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">BMI Calculator</a>
+        </div>
+        <div class="footer__bar"> 
+          Copyright © 2024 Web Design Mastery. All rights reserved.
+         </div> 
+        
+      </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    {% block script%}
+    {% endblock %}
+  </body>
+</html>

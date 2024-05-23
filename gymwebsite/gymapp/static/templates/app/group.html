@@ -1,0 +1,48 @@
+{% extends 'index.html'%}
+
+{% block style%}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'group.css' %}">
+{% endblock %}
+
+{% block body%}
+<div id="groupbody">
+
+
+    <div class="group">
+    </div>
+    <div class="container">
+        <div class="text">
+        <h3>WHY Active Life GYM</h3>
+       <p>Now completing 50 years. We Keep Getting Stronger The India chapter of Active Life Gym 
+        started in 2002, when the first Active Life Gym With 701+ Facilities  It has cut out
+         for itself 102 gyms in India with another 5 under construction and ready to 
+         start in this year.<br><br>With multiple awards for excellence under its
+          belt including 2 awards from the Lions Club for the “Best Fitness Chain”,
+           an award from the Images Beauty &amp; Wellness for the Most admired 
+           fitness chain of the year”, an award from Franchise India, 8 awards 
+           from Active Life Gym International, making it a very eventful 12 years in the 
+           growth of the business. Active Life Gym India has bagged the most prestigious 
+           Economic Times ET award for ‘Excellence in Marketing 2013’ &amp; 
+           ‘Excellence in Customer Service 2014’.</p>
+           <div class="image">
+           <img src="/static/body-1.webp">
+           </div>
+      
+    </div>
+    <div id="seeplandiv">
+        <div>
+            <h1>GGX OUR KEY DEMOGRAPHICS</h1>
+            <p>Members:- We Cater To Very Niche Captive Audience Who Are Already Prominent People 
+                In Society And Fitness Enthusiast. Some Of The Past And Present.</p>
+            <p>ALL GYMS HAVE A 30% FEMALE : 70% MALE RATIO • AGE GROUP :- -15% BELOW 24 YEARS – 75% BETWEEN
+                 24-50 YEARS – 10% ABOVE 50 YEARS</p>
+            <p>FOOTFALLS:- ON AN AVERAGE WE HAVE 350 WORKOUTS PER DAY PER GYM.</p>
+            <p>GYM SIZE: 7000SQ FT TO 15000 SQ FT</p>     
+        </div>
+        <div class="center">  
+            <a href="{% url 'showplan' %}?name=group" class="btn btn-primary"><b>See plans<b></a>
+        </div> 
+    </div>    
+</div>     
+{% endblock %}

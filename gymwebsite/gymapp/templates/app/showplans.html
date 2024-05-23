@@ -1,0 +1,57 @@
+{% extends 'index.html'%}
+
+{% block style%}
+  {% load static %}
+  <style>
+      #plansbox h1{
+        margin:5rem 0rem;
+        text-align:center;
+      }
+        #plans{
+          margin:2rem 0rem;
+          padding:2rem;
+            display:grid;
+            grid-template-columns:repeat(3,.1fr);
+            {% comment %} border:2px solid black; {% endcomment %}
+            justify-content:center;
+            gap:1rem;
+        }
+        #membershipdetails{
+          color:green;
+        }
+        #price{
+          color:orangered;
+        }
+        .planbuttons a{
+          background-color:green;
+          color:white;
+        }
+        .planbuttons a:hover{
+          color:white;
+          
+          background-color:orangered;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div id="plansbox"  class='container'>
+      <h1>{{membership_name}} membership exclusive plans </h1>
+
+      <div id='plans'>
+        {% for i in allplans %}
+        <div class="card" style="width: 18rem;height:22rem;box-shadow:2px 2px 5px black;">
+          <img src="{{i.image.url}}" class="card-img-top" style="height:11rem;"alt="...">
+          <div class="card-body">
+            <h5 class="card-title" id='membershipdetails'>{{i.type}} membership {{i.plan_validity}} plan</h5>
+            {% comment %} <p class="card-text">{{i.plan_validity}}</p> {% endcomment %}
+            <h5 id='price'>₹ {{i.price}}</h5>
+            <div class='planbuttons'>
+              <a href="/{{i.type}}/" class="btn">Explore</a>
+              <a href="{% url 'buymembershipform'%}?name={{i.type}}&validity={{i.plan_validity}}&plan={{i.price}}" class="btn">Buy plan</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}

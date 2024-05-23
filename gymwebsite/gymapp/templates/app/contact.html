@@ -1,0 +1,87 @@
+
+{% extends 'index.html'%}
+
+{% block style%}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'contact.css' %}">
+{% endblock %}
+
+{% block body%}
+
+<div class="box">
+  <h2>Contact's Active Life Gym</h2>
+  <h3>WE'D LOVE TO HEAR FROM YOU</h3>
+</div>
+<div class="mar"><h2><marquee>Welcome to our Active Life gym</marquee></h2></div>
+<div class="main">
+  
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form action="{% url 'contact' %}" method="post" id="myform">
+      {% csrf_token %}
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="phone">Phone:</label>
+      <input type="phone" id="phone" name="phone" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", function()
+  {
+    
+    document.getElementById("myform").addEventListener("submit", function(event)
+    {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+           
+      let message=document.getElementById("message").value;
+            
+          if(name==""||phone==""||message=="")
+           {
+            alert("All fields are mandatory");
+            event.preventDefault();
+           }
+          if (!isString(name)) {
+           alert("Name must contain only alphabets.");
+           event.preventDefault();
+           
+         }
+          
+         
+         if(phone.length<10 || phone.length>10)
+           {
+             alert("Phone Number should be of 10 Digits ! please Enter a valid number ");
+             event.preventDefault();
+             
+           }
+         if (isNaN(phone)){
+            alert("only Number are allow ! please Enter a Number ")
+            event.preventDefault();
+            
+          }
+
+
+     });
+      function isString(str) {
+        return /^[a-zA-Z]+$/.test(str);
+      }
+      
+    
+      });
+
+     
+
+    </script> 
+
+    
+
+{% endblock %}

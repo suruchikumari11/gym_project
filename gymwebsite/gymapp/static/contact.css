@@ -1,0 +1,99 @@
+.main {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url("gym_bg1.jpg"); 
+    background-size: 100%;
+    background-position: center;
+    background-size: contain;
+    margin-top: 0px;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 100px auto;
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 0px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    margin-top: 60px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="phone"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    transition: border-bottom-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="phone"]:focus,
+  textarea:focus {
+    border-bottom-color: #f39c12;
+  }
+  
+  button[type="submit"] {
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 0;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #e67e22;
+  }
+  
+  
+    .box{
+      /* margin-top: 90px; */
+      margin-bottom: 0px;
+      width:100%;
+      height:250px;
+      background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("gym_back.jpg");
+      background-size: 100%;
+      background-position: center;
+      background-size: cover;
+      
+    }
+    .box h2{
+      font-size: 50px;
+      color: #fff;
+      padding-left: 470px;
+      padding-top: 50px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+    .box h3{
+      font-size: 20px;
+      color:white;
+      padding-left: 540px;
+    }
+    .mar{
+      background-color: rgb(243, 125, 125);
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  

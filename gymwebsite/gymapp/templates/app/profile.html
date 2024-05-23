@@ -1,0 +1,99 @@
+{% extends 'index.html'%}
+
+{% block style%}
+  {% load static %}
+  <style>
+    #profilebox{
+        margin-top:10vh;
+        {% comment %} height:80vh; {% endcomment %}
+    }
+    #profileicon{
+        padding:2rem;
+        display:flex;
+        
+        justify-content:center;
+        
+    }
+    #profileicon i{
+        color:orangered;
+        font-size:10rem;
+    }
+    #username{
+        display:flex;
+        
+        justify-content:center;
+    }
+    #yourmemberships{
+        background-color:#bebebe;
+        margin-top:10vh;
+        border-radius:1rem;
+        border:1px solid black;
+        box-shadow:2px 2px 5px black;
+    }
+    #plans{
+        margin:2rem 0rem;
+        padding:2rem;
+          display:grid;
+          grid-template-columns:repeat(3,.1fr);
+          {% comment %} border:2px solid black; {% endcomment %}
+          justify-content:center;
+          gap:1rem;
+      }
+      #membershipdetails{
+        color:green;
+      }
+      #price{
+        color:orangered;
+      }
+      #nomemebership{
+        color:red;
+      }
+      
+  </style>
+  
+{% endblock %}
+
+{% block body%}
+<div id="profilebox">
+    <div id="profileicon">
+        <i class="fa-solid fa-user"></i>
+    </div>
+    <div id="username">
+        <h2>{{user.username}}</h2>    
+    </div>
+    <div id="yourmemberships" class="container">
+        <h2 style='text-align:center;padding-top:2rem;'>Your Membership</h2>
+        <div id='plans'>
+            {% if allplans %}
+            {% for i in allplans %}
+            <div class="card" style="width: 18rem;box-shadow:2px 2px 5px black;">
+              
+              <div class="card-body">
+                <h5 class="card-title" id='membershipdetails'>{{i.membershipname}} membership {{i.validity}} plan</h5>
+                
+                <p>Name : {{i.name}}</p>
+                <p>Membership-type : {{i.membershipname}}</p>
+                <p>Validity : {{i.validity}}</p>    
+                <p>Time slot : {{i.timeslot}}</p>
+                <p>Purchase date : {{i.join_date}}</p>
+                <p>Expire date : {{i.expire_date}}</p>
+                <h5 id='price'>Price : ₹ {{i.price}}</h5>
+               
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <h3 id="nomemebership">No membership purchased.</h3>
+            {% endif %}
+          </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block script%}
+{% endblock %}
